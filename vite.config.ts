@@ -1,14 +1,20 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { resolve } from "path";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-  const basePath = mode === 'development' ? '/' : '/interview-react/'
+  const basePath = mode === "development" ? "/" : "/interview-react/";
   return {
     plugins: [react()],
     server: {
-      port: 8080
+      port: 8080,
     },
-    base: basePath
-  }
-})
+    base: basePath,
+    resolve: {
+      alias: {
+        "@": resolve(__dirname, "src"),
+      },
+    },
+  };
+});
