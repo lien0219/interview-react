@@ -32,9 +32,15 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run build
 
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
       - name: Ensure gh-pages branch exists
         run: |
-          git fetch origin gh-pages || git checkout --orphan gh-pages
+          git fetch origin gh-pages || true
+          git checkout gh-pages || git checkout --orphan gh-pages
           git commit --allow-empty -m "Initialize gh-pages branch"
           git push origin gh-pages || true
 
