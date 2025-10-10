@@ -6,8 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "build:test": "tsc -b && vite build --mode test",
+    "build:preview": "tsc -b && vite build --mode preview",
+    "build:prod": "tsc -b && vite build --mode production",
     "preview": "vite preview",
+    "preview:test": "vite preview --mode test",
+    "preview:preview": "vite preview --mode preview",
+    "preview:prod": "vite preview --mode production",
+    "lint": "eslint .",
     "prepare": "husky install",
     "commit": "git-cz"
   },
@@ -17,8 +23,13 @@
     }
   },
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@types/react-router-dom": "^5.3.3",
+    "antd": "^5.27.4",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.4",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
