@@ -47,11 +47,12 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}   
           publish_dir: ./dist
           publish_branch: gh-pages
-          keep_files: true
-          force_orphan: false
+          keep_files: true          
+          force_orphan: false       
           user_name: github-actions
           user_email: github-actions@github.com
           commit_message: "Deploy to GitHub Pages [skip ci]"
+          commit_args: "--no-verify"   
