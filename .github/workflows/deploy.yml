@@ -28,19 +28,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      - name: Install dependencies
-        run: pnpm install
+      - run: pnpm install
+      - run: pnpm run lint
+      - run: pnpm run build
 
-      - name: Run lint
-        run: pnpm run lint
-
-      - name: Build project
-        run: pnpm run build
-
-      - name: Deploy to GitHub Pages (keep history)
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          keep_files: true
-          keep_history: true
+          publish_branch: gh-pages
+          keep_files: true          # 保留已有文件
+          force_orphan: false       # 避免每次都建新孤立分支
+          user_name: github-actions
+          user_email: github-actions@github.com
+          commit_message: "Deploy to GitHub Pages [skip ci]"
