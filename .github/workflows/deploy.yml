@@ -41,7 +41,7 @@ jobs:
         run: |
           git fetch origin gh-pages || true
           git checkout gh-pages || git checkout --orphan gh-pages
-          git commit --allow-empty -m "Initialize gh-pages branch"
+          git commit --allow-empty -m "Initialize gh-pages branch" --no-verify
           git push origin gh-pages || true
 
       - name: Deploy to GitHub Pages
