@@ -3,30 +3,24 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
 import App from "@/App";
-import { isDev } from "@/utils/env";
 
-const basename = isDev ? "" : "/interview-react/";
-
-export const router = createHashRouter(
-  [
-    {
-      path: "/",
-      element: <App />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/about",
-          element: <About />,
-        },
-        {
-          path: "/contact",
-          element: <Contact />,
-        },
-      ],
-    },
-  ],
-  { basename }
-);
+export const router = createHashRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+  },
+]);
